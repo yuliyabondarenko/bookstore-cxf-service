@@ -10,12 +10,11 @@
                         http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
                         http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 
-    <bean id="exampleServiceBean" class="impl.ExampleServiceImpl"/>
-    <bean id="secondServiceBean" class="impl.SecondServiceImpl"/>
+    <bean id="booksApiBean" class="impl.BooksApiImpl"/>
 
-    <jaxrs:server id="exampleServer" address="/example">
+    <jaxrs:server id="booksServer" address="/books">
         <jaxrs:serviceBeans>
-            <ref bean="exampleServiceBean"/>
+            <ref bean="booksApiBean"/>
         </jaxrs:serviceBeans>
 
         <jaxrs:features>
@@ -23,21 +22,7 @@
         </jaxrs:features>
 
         <jaxrs:providers>
-            <bean class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider" />
-        </jaxrs:providers>
-    </jaxrs:server>
-
-    <jaxrs:server id="secondServer" address="/second">
-        <jaxrs:serviceBeans>
-            <ref bean="secondServiceBean"/>
-        </jaxrs:serviceBeans>
-
-        <jaxrs:features>
-            <cxf:logging/>
-        </jaxrs:features>
-
-        <jaxrs:providers>
-            <bean class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider" />
+            <bean class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider"/>
         </jaxrs:providers>
     </jaxrs:server>
 
